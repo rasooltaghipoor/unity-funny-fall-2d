@@ -14,9 +14,9 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         _enemyPool = new GameObject[_enemyPoolSize];
-        spawnInitialEnemies();
         _lastYPos = 0;
         _currentIndex = 0;
+        spawnInitialEnemies();
     }
 
     // Update is called once per frame
@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
         {
             _lastYPos = Random.Range(_lastYPos - GameConrtoller.WorldScreenHeight / 2, _lastYPos - GameConrtoller.WorldScreenHeight * 2);
             _enemyPool[_currentIndex].transform.position = new Vector3(Random.Range(-GameConrtoller.WorldScreenWidth * 0.5f, GameConrtoller.WorldScreenWidth * 0.5f), _lastYPos, 0);
+            _currentIndex = (_currentIndex + 1) % _enemyPoolSize;
         }
     }
 
