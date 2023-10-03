@@ -36,7 +36,6 @@ public class Borders : MonoBehaviour
     {
         if (_leftBorders[_currentIndex].transform.position.y - Camera.main.transform.position.y > _borderHeight * 1.2f)
         {
-            Debug.Log("Change border " + _currentIndex);
             _leftBorders[_currentIndex].transform.position = new Vector3(-_xOffset, _lastYPos, 0);
             _rightBorders[_currentIndex].transform.position = new Vector3(_xOffset, _lastYPos, 0);
             _lastYPos -= _borderHeight;
