@@ -34,16 +34,14 @@ public class GameConrtoller : MonoBehaviour
         {
             isStartLine = false;
             firstMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log("First: " + firstMousePosition.x);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             lastMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log("Last: " + lastMousePosition.x);
             if (Vector2.Distance(lastMousePosition, firstMousePosition) > 0.1f)
             {
-                Debug.Log("Distance: " + Vector2.Distance(lastMousePosition, firstMousePosition));
+                // Debug.Log("Distance: " + Vector2.Distance(lastMousePosition, firstMousePosition));
                 Vector3 direction = lastMousePosition - firstMousePosition;
                 barrier.position = new Vector3(lastMousePosition.x, lastMousePosition.y, 0);
                 var angle = Mathf.Atan2(lastMousePosition.y - firstMousePosition.y, lastMousePosition.x - firstMousePosition.x) * 180 / Mathf.PI;
