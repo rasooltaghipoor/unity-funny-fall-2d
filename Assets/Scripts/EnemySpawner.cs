@@ -10,8 +10,10 @@ public class EnemySpawner : MonoBehaviour
     private GameObject[] _enemyPool;
     private float _lastYPos;
     private int _currentIndex;
+    public GameObject[] EnemyPool => _enemyPool;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _enemyPool = new GameObject[_enemyPoolSize];
         _lastYPos = 0;

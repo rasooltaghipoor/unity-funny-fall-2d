@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3116931248275405326}
   m_Layer: 0
   m_Name: Jackal
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ba2d8a71de150b89bfc63828b95773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _injuryValue: 10
+  _damageValue: 20
 --- !u!50 &4014581207803502919
 Rigidbody2D:
   serializedVersion: 4
