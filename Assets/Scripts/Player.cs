@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public UnityAction<float> OnPlayerCollision;
+    // public UnityAction<GameObject> OnEnemyCollision;
 
-    [SerializeField]
-    private float _damageValue;
+    public readonly float Health = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +22,9 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Enemy")
         {
-            OnPlayerCollision(_damageValue);
-            transform.position = new Vector3(-GameConrtoller.WorldScreenWidth, transform.position.x, 0);
+
         }
     }
 }

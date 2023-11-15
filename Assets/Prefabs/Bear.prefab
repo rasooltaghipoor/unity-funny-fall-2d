@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3158283845021876302}
   m_Layer: 0
   m_Name: Bear
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ba2d8a71de150b89bfc63828b95773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _injuryValue: 30
+  _damageValue: 50
 --- !u!50 &1412669339060812914
 Rigidbody2D:
   serializedVersion: 4
