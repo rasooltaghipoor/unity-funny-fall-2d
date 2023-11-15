@@ -35,7 +35,8 @@ public class GameConrtoller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        foreach (GameObject enemy in GetComponent<EnemySpawner>().EnemyPool)
+            enemy.GetComponent<Enemy>().OnPlayerCollision += CheckCollisionImpact;
     }
 
     // Update is called once per frame
@@ -66,9 +67,11 @@ public class GameConrtoller : MonoBehaviour
     private void CheckCollisionImpact(float damage)
     {
         _playerHealth -= damage;
+        Debug.Log($"Health: {_playerHealth}");
         if (_playerHealth <= 0)
         {
             // TODO: Game over! Do final actions.
+            Debug.Log("Game Over!");
         }
     }
 

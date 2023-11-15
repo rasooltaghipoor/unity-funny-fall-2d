@@ -1776,6 +1776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheep
       objectReference: {fileID: 0}
+    - target: {fileID: 6426950200912381552, guid: aacbcd22d60d28c76a1c4b313b9d2c71, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6426950200912381556, guid: aacbcd22d60d28c76a1c4b313b9d2c71, type: 3}
       propertyPath: m_GravityScale
       value: 1

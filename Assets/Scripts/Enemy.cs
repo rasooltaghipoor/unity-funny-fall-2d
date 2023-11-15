@@ -23,10 +23,10 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // if (other.gameObject.tag == "Player")
-        // {
-        //     OnPlayerCollision(_damageValue);
-        //     transform.position = new Vector3(-GameConrtoller.WorldScreenWidth, transform.position.x, 0);
-        // }
+        if (other.gameObject.tag == "Player")
+        {
+            OnPlayerCollision(_damageValue);
+            transform.position = new Vector3(-GameConrtoller.WorldScreenWidth, transform.position.x, 0);
+        }
     }
 }

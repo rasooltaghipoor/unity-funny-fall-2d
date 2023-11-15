@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    public UnityAction<GameObject> OnEnemyCollision;
+    // public UnityAction<GameObject> OnEnemyCollision;
 
     public readonly float Health = 100;
     // Start is called before the first frame update
