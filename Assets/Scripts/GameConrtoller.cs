@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameConrtoller : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameConrtoller : MonoBehaviour
     private Transform barrier;
     [SerializeField]
     private GameObject _player;
+    [SerializeField]
+    private Slider _healthBar;
     private Player _playerScript;
     private float _playerHealth;
 
@@ -28,6 +31,8 @@ public class GameConrtoller : MonoBehaviour
         _enemySpawner = GetComponent<EnemySpawner>();
         _playerScript = _player.GetComponent<Player>();
         _playerHealth = _playerScript.Health;
+        _healthBar.maxValue = _playerScript.Health;
+        _healthBar.value = _playerScript.Health;
 
         // Array.ForEach(_enemySpawner.EnemyPool, enemy => enemy.OnPlayerCollision = CheckCollisionImpact);
     }
@@ -67,6 +72,7 @@ public class GameConrtoller : MonoBehaviour
     private void CheckCollisionImpact(float damage)
     {
         _playerHealth -= damage;
+        _healthBar.value = _playerHealth;
         Debug.Log($"Health: {_playerHealth}");
         if (_playerHealth <= 0)
         {
