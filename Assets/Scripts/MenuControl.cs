@@ -14,10 +14,10 @@ public class MenuControl : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            CheckPause();
+            ChangePauseStatus();
     }
 
-    public void CheckPause()
+    public void ChangePauseStatus()
     {
         GameIsPaused = !GameIsPaused;
         Time.timeScale = GameIsPaused ? 0 : 1;

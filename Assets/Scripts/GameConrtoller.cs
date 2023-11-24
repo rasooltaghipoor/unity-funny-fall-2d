@@ -19,8 +19,13 @@ public class GameConrtoller : MonoBehaviour
     private GameObject _player;
     [SerializeField]
     private Slider _healthBar;
+    [SerializeField]
+    private GameObject _endMenu;
+    [SerializeField]
+    private GameObject _mainMenu;
     private Player _playerScript;
     private float _playerHealth;
+    private MenuControl _pauseControl;
 
     void Awake()
     {
@@ -33,6 +38,7 @@ public class GameConrtoller : MonoBehaviour
         _playerHealth = _playerScript.Health;
         _healthBar.maxValue = _playerScript.Health;
         _healthBar.value = _playerScript.Health;
+        _pauseControl = GetComponent<MenuControl>();
 
         // Array.ForEach(_enemySpawner.EnemyPool, enemy => enemy.OnPlayerCollision = CheckCollisionImpact);
     }
@@ -47,25 +53,28 @@ public class GameConrtoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _isStartLine)
+        if (!MenuControl.GameIsPaused)
         {
-            _isStartLine = false;
-            _firstMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            _lastMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (Vector2.Distance(_lastMousePosition, _firstMousePosition) > 0.1f)
+            if (Input.GetMouseButtonDown(0) && _isStartLine)
             {
-                // Debug.Log("Distance: " + Vector2.Distance(_lastMousePosition, _firstMousePosition));
-                Vector3 direction = _lastMousePosition - _firstMousePosition;
-                barrier.position = new Vector3(_lastMousePosition.x, _lastMousePosition.y, 0);
-                var angle = Mathf.Atan2(_lastMousePosition.y - _firstMousePosition.y, _lastMousePosition.x - _firstMousePosition.x) * 180 / Mathf.PI;
-                // float angle2 = Vector2.SignedAngle(_lastMousePosition - _firstMousePosition, Vector2.right);
-                barrier.eulerAngles = new Vector3(0, 0, angle);
+                _isStartLine = false;
+                _firstMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
-            _isStartLine = true;
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                _lastMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (Vector2.Distance(_lastMousePosition, _firstMousePosition) > 0.1f)
+                {
+                    // Debug.Log("Distance: " + Vector2.Distance(_lastMousePosition, _firstMousePosition));
+                    Vector3 direction = _lastMousePosition - _firstMousePosition;
+                    barrier.position = new Vector3(_lastMousePosition.x, _lastMousePosition.y, 0);
+                    var angle = Mathf.Atan2(_lastMousePosition.y - _firstMousePosition.y, _lastMousePosition.x - _firstMousePosition.x) * 180 / Mathf.PI;
+                    // float angle2 = Vector2.SignedAngle(_lastMousePosition - _firstMousePosition, Vector2.right);
+                    barrier.eulerAngles = new Vector3(0, 0, angle);
+                }
+                _isStartLine = true;
+            }
         }
     }
 
@@ -77,9 +86,13 @@ public class GameConrtoller : MonoBehaviour
         if (_playerHealth <= 0)
         {
             // TODO: Game over! Do final actions.
+            _endMenu.SetActive(true);
+            _pauseControl.ChangePauseStatus();
             Debug.Log("Game Over!");
         }
     }
+
+    public void ActivateMainMenu() => _mainMenu.SetActive(true);
 
     public enum GameState
     {
